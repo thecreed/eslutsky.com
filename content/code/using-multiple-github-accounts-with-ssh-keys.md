@@ -1,10 +1,12 @@
 ---
-title: "Using Multiple github accounts with ssh-keys"
-date: 2023-06-05T09:31:27+01:00
+title: "Using Multiple Github Accounts With ssh Keys"
+date: 2023-06-05T10:15:35+03:00
+draft: true
 
-categories: ['Code', 'github','ssh']
-tags: ['github']
-author: "eslutsky"
+categories: []
+tags: []
+toc: false
+author: ""
 ---
 I have two Github accounts: *oanhnn* (personal) and *superman* (for work).
 I want to use both accounts on same computer (without typing password everytime, when doing git push or pull).
@@ -12,16 +14,12 @@ I want to use both accounts on same computer (without typing password everytime,
 <!--more-->
 
 
-## Problem
-I have two Github accounts: *oanhnn* (personal) and *superman* (for work).
-I want to use both accounts on same computer (without typing password everytime, when doing git push or pull).
-
 ## Solution
 Use ssh keys and define host aliases in ssh config file (each alias for an account).
 
 ## How to?
-1. [Generate ssh key pairs for accounts](https://help.github.com/articles/generating-a-new-ssh-key/) and [add them to GitHub accounts](https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/).
-2. Edit/Create ssh config file (`~/.ssh/config`):
+- [Generate ssh key pairs for accounts](https://help.github.com/articles/generating-a-new-ssh-key/) and [add them to GitHub accounts](https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/).
+- Edit/Create ssh config file (`~/.ssh/config`):
 
    ```conf
    # Default github account: oanhnn
@@ -37,14 +35,14 @@ Use ssh keys and define host aliases in ssh config file (each alias for an accou
       IdentitiesOnly yes
    ```
    
-3. [Add ssh private keys to your agent](https://help.github.com/articles/adding-a-new-ssh-key-to-the-ssh-agent/):
+- [Add ssh private keys to your agent](https://help.github.com/articles/adding-a-new-ssh-key-to-the-ssh-agent/):
 
    ```shell
    $ ssh-add ~/.ssh/oanhnn_private_key
    $ ssh-add ~/.ssh/superman_private_key
    ```
 
-4. Test your connection
+- Test your connection
 
    ```shell
    $ ssh -T git@github.com
@@ -69,7 +67,7 @@ Use ssh keys and define host aliases in ssh config file (each alias for an accou
    Hi superman! You've successfully authenticated, but GitHub does not provide shell access.
    ```
 
-5. Now all are set, just clone your repositories
+- Now all are set, just clone your repositories
 
    ```shell
    $ git clone git@github-superman:org2/project2.git /path/to/project2
