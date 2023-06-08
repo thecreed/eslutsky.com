@@ -1,0 +1,54 @@
+on:
+  workflow_dispatch:
+
+name: Build Release
+jobs:
+  # This workflow contains a single job called "deploy"
+  deploy:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+
+    # Step 1 - Checks-out your repository under $GITHUB_WORKSPACE
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+          submodules: true  # Fetch Hugo themes
+          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+
+    - name: Get current date
+      id: date
+      run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+
+    - name: Tag snapshot
+      uses: tvdias/github-tagger@v0.0.1
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        tag: ${{ steps.date.outputs.date }}
+
+
+    # Step 2 - Sets up the latest version of Hugo
+    - name: Setup Hugo
+      uses: peaceiris/actions-hugo@v2
+      with:
+          hugo-version: 'latest'
+
+    # Step 3 - Clean and don't fail
+    - name: Clean public directory
+      run: rm -rf public
+
+    # Step 4 - Builds the site using the latest version of Hugo
+    # Also specifies the theme we want to use
+    - name: Build
+      run: hugo --theme=bilberry-hugo-theme
+    - name: package the folder
+      run: tar cvfz public.tar.gz public
+
+    - name: Release
+      uses: softprops/action-gh-release@v1
+      with:
+        name: 
+        files: public.tar.gz
+        tag_name: ${{ steps.date.outputs.date }}
