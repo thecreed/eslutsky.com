@@ -75,4 +75,4 @@ Use ssh keys and define host aliases in ssh config file (each alias for an accou
    $ git config user.name  "Super Man"
    ```
 
-Done! Goodluck!
+Done! Good luck!
