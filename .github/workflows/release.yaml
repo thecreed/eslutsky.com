@@ -44,11 +44,12 @@ jobs:
     - name: Build
       run: hugo --theme=bilberry-hugo-theme
     - name: package the folder
-      run: tar cvfz public.tar.gz public
+      run: tar cvfz public.tar.gz public scripts
 
     - name: Release
       uses: softprops/action-gh-release@v1
       with:
         name: 
-        files: public.tar.gz
+        files: |
+          public.tar.gz
         tag_name: ${{ steps.date.outputs.date }}
