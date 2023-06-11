@@ -1,9 +1,8 @@
 ---
 title: "Using Multiple Github Accounts With ssh Keys"
 date: 2023-06-05T10:15:35+03:00
-draft: true
 
-categories: []
+categories: ['Code']
 tags: []
 toc: false
 author: ""
