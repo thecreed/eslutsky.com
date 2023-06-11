@@ -18,15 +18,16 @@ jobs:
           submodules: true  # Fetch Hugo themes
           fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
 
-    - name: Get current date
+    - name: Get commit sha
       id: date
-      run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+      run: |
+        echo "sha=$(git rev-parse --short ${GITHUB_SHA})" >> $GITHUB_OUTPUT
 
     - name: Tag snapshot
       uses: tvdias/github-tagger@v0.0.1
       with:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
-        tag: ${{ steps.date.outputs.date }}
+        tag: ${{ steps.date.outputs.sha}}
 
 
     # Step 2 - Sets up the latest version of Hugo
@@ -52,4 +53,4 @@ jobs:
         name: 
         files: |
           public.tar.gz
-        tag_name: ${{ steps.date.outputs.date }}
+        tag_name: ${{ steps.date.outputs.sha}}

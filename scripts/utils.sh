@@ -45,6 +45,3 @@ sudo systemctl daemon-reload
 sudo systemctl start  git-hook-listener.service
 sudo systemctl enable  git-hook-listener.service
 }
-
-s
-/etc/systemd/system/rot13.service
