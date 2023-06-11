@@ -8,7 +8,7 @@ toc: false
 author: ""
 ---
 I have two Github accounts: *oanhnn* (personal) and *superman* (for work).
-I want to use both accounts on same computer (without typing password everytime, when doing git push or pull).
+I want to use both accounts on same computer (without typing the password everytime, when doing git push or pull).
 
 <!--more-->
 
