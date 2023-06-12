@@ -1,6 +1,9 @@
 on:
   workflow_dispatch:
-
+  push:
+    branches:
+      - 'main'
+      
 name: Build Release
 jobs:
   # This workflow contains a single job called "deploy"
