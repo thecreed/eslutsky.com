@@ -1,3 +1,3 @@
 # eslutsky.com
 
-contains source code for eslutsky.com blog
+source code for eslutsky.com blog
