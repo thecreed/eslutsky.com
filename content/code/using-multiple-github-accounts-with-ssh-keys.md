@@ -5,7 +5,7 @@ date: 2023-06-05T10:15:35+03:00
 categories: ['Code']
 tags: []
 toc: false
-author: ""
+author: "eslutsky"
 ---
 I have two Github accounts: *oanhnn* (personal) and *superman* (for work).
 I want to use both accounts on same computer (without typing the password everytime, when doing git push or pull).
